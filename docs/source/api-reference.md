@@ -4,6 +4,12 @@ The generated Doxygen reference lives in the C++ RSpline repository. This
 manual supplies tutorials; header contracts and implementation remain the
 source of truth.
 
+## Published reference
+
+The [RSpline 1.0.0 API reference](https://rspline-docs.web.cern.ch/v1.0.0/index.html)
+is published separately from this manual. Each C++ library release tag has its
+own directory on the CERN web service, so API links can target a fixed release.
+
 ## Generate the reference
 
 Like NAIA, RSpline discovers Doxygen automatically during normal configuration.
