@@ -20,8 +20,8 @@ python -m sphinx -n -W --keep-going -b html docs/source docs/build/html
 Open `docs/build/html/index.html`. `make -C docs html` runs the same strict
 HTML build. Requirements are pinned, including transitive dependencies, and
 CI follows NAIA: `build:docker` uses `sphinxdoc/sphinx`, installs requirements
-and runs `make html`. Read the Docs uses the configured Python 3.12 toolchain. Missing local references
-and Sphinx warnings fail the build.
+and runs `make html`. Read the Docs uses the configured Python 3.12 toolchain.
+Missing local references and Sphinx warnings fail the build.
 
 ## Read the Docs setup
 
@@ -34,6 +34,29 @@ no public hosting address is assumed in the manual.
 
 The configuration follows the official
 [Read the Docs v2 reference](https://docs.readthedocs.com/platform/stable/config-file/v2.html).
+
+
+## Webhook deployment
+
+GitLab CI builds the HTML artifact. Read the Docs builds and publishes its own
+copy when notified by the repository webhook; no deployment job is needed in CI.
+The webhook is configured in the services, not in `.gitlab-ci.yml`.
+
+After creating/importing the Read the Docs project:
+
+1. In Read the Docs, open **Admin > Integrations** and add a **GitLab**
+   integration if one does not already exist. Use its generated webhook URL
+   and secret token, rather than another project's integration.
+2. In [RSpline-docs > Settings > Webhooks](https://gitlab.cern.ch/ams-italy/docs/RSpline-docs/-/hooks),
+   add that URL and secret token. Enable **Push events**, **Tag push events**
+   and **Merge request events**, and keep SSL verification enabled.
+3. Test a push delivery in GitLab, then confirm that Read the Docs receives
+   the event and completes a build. Enable `latest` for `master` and any desired
+   release versions in Read the Docs.
+
+The Read the Docs project must exist before its integration can be configured.
+Keep the integration secret in the service settings. The procedure follows the
+[official GitLab integration guide](https://docs.readthedocs.com/platform/stable/guides/setup/git-repo-manual.html).
 
 ## Maintaining the manual
 
