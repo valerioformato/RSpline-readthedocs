@@ -28,13 +28,13 @@ Missing local references and Sphinx warnings fail the build.
 Import this repository as a Sphinx project and keep `.readthedocs.yaml` at its
 root. The configuration selects Ubuntu 24.04, Python 3.12, the requirements file,
 and `docs/source/conf.py`, with warnings treated as errors. Enable the default
-branch and any desired release versions in the hosting project. Repository
-creation/import and an actual hosted URL are separate from generating this site;
-no public hosting address is assumed in the manual.
+branch and any desired release versions in the hosting project.
+
+The project dashboard and build history are available at
+[RSpline on Read the Docs](https://app.readthedocs.org/projects/rspline/).
 
 The configuration follows the official
 [Read the Docs v2 reference](https://docs.readthedocs.com/platform/stable/config-file/v2.html).
-
 
 ## Webhook deployment
 
