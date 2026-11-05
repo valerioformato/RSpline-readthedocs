@@ -19,7 +19,8 @@ python -m sphinx -n -W --keep-going -b html docs/source docs/build/html
 
 Open `docs/build/html/index.html`. `make -C docs html` runs the same strict
 HTML build. Requirements are pinned, including transitive dependencies, and
-CI uses the same Python 3.12 toolchain as Read the Docs. Missing local references
+CI follows NAIA: `build:docker` uses `sphinxdoc/sphinx`, installs requirements
+and runs `make html`. Read the Docs uses the configured Python 3.12 toolchain. Missing local references
 and Sphinx warnings fail the build.
 
 ## Read the Docs setup
