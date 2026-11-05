@@ -1,0 +1,15 @@
+stages:
+  - build
+
+manual:
+  stage: build
+  image: python:3.12-bookworm
+  before_script:
+    - python -m pip install --requirement docs/requirements.txt
+  script:
+    - python -m sphinx -n -W --keep-going -b html docs/source docs/build/html
+  artifacts:
+    when: always
+    paths:
+      - docs/build/html/
+    expire_in: 1 week
