@@ -22,8 +22,11 @@ secret_detection:
 .build: &build
   stage: build
   script:
+    # Isolate pinned dependencies from packages preinstalled in the image.
+    - python -m venv .venv
+    - . .venv/bin/activate
     - cd docs
-    - pip install -r requirements.txt
+    - python -m pip install -r requirements.txt
     - make html
   artifacts:
     paths:

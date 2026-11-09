@@ -20,7 +20,9 @@ python -m sphinx -n -W --keep-going -b html docs/source docs/build/html
 Open `docs/build/html/index.html`. `make -C docs html` runs the same strict
 HTML build. Requirements are pinned, including transitive dependencies, and
 CI follows NAIA: `build:docker` uses `sphinxdoc/sphinx`, installs requirements
-and runs `make html`. Read the Docs uses the configured Python 3.12 toolchain.
+in a fresh virtual environment and runs `make html`. This avoids conflicts when
+upgrading packages preinstalled in the image, including `roman-numerals-py`.
+Read the Docs uses the configured Python 3.12 toolchain.
 Missing local references and Sphinx warnings fail the build.
 
 ## Read the Docs setup
